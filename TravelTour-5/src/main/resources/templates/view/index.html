@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
+   ">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link th:href="@{/view/css/style.css}" rel='stylesheet' type='text/css' />
+  </head>
+
+  <body>
+      <!--Navbar top-->
+    <div class="top-nav" id="home">
+        <div class="container">
+            <div class="row justify-content-between ">
+                <div class="col-auto">
+                    <p>
+                        <span><i class='bx bxs-map'></i></span>
+                        <span>Cần Thơ,Việt Nam</span>
+                    </p>
+                    <p>
+                        <span><i class='bx bxs-phone-call'></i></span>
+                        <span>+84357534716</span>
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-instagram-alt' ></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+              <img class="ss" src="images/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tour</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Danh mục
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+        
+              
+          </div>
+          <div class="login">
+            <a th:if="${#request.userPrincipal == null}" th:href="@{/login}"><span >Đăng nhập [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/view/alogin}"><span > [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal == null}" href=""><span>Đăng ký</span></a>
+           <a th:if="${#request.userPrincipal != null}" th:href="@{/logoutSuccessful}"><span>Đăng xuất</span></a>
+            		
+            		<a  href="@{/view/alogin}" class="btn btn-danger">Chuyển</a>
+            		
+            	
+       
+        </div>
+        <div class="cart">
+            <a  th:href="@{/giohang/xemgiohang}"><span><i class='bx bx-cart' ></i></span></a>
+        </div>
+        <div class="soluonggiohang"><span  th:text="${soluonggiohang}" ></span></div>
+        </div>
+        <!-- <div class="image">
+            <img width="50px" heigh="20px" src="images/giohang.png" alt="">
+        </div> -->
+      </nav>
+      <script>
+
+      </script>
+      <!--slider 1-->
+      <div class="slider-wrapper">
+        <div class="slide1">
+            <div class="container">
+                <div class="col-12">
+                 <h1>Lên kế hoạch ngay!</h1>
+                 <p>Du lịch tận hưởng, trải nghiệm du lịch thú vị và giá rẻ chưa từng thấy. Luôn luôn lắng nghe luôn luôn thấu hiểu</p>
+               
+                </div>
+                <form action ="" method="get" class="tourz-search-form">
+                    <div class="a">
+                        <!-- <select name="gia" multiple>
+                            <option value="">a</option>
+                            <option value="">b</option>
+                        </select> -->
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name ="tk" placeholder="Tìm kiếm ngày khởi hành, địa điểm, giá, tên tour" id="select-search" class="autocomplete">
+                    </div>
+                    <div class="input-field">
+                        <input type="submit" value="Tìm kiếm" class="waves-effect waves-light tourz-sear-btn"> </div>
+                </form>
+                <div class="tourz-hom-ser">
+                    <ul>
+                        <li>
+                            <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn wow fadeInUp" data-wow-duration="0.5s"><img src="images/icon/2.png" alt=""> Tour</a>
+                        </li>
+                        <li>
+                            <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn wow fadeInUp" data-wow-duration="1s"><img src="images/icon/31.png" alt=""> Flight</a>
+                        </li>
+                        <li>
+                            <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn wow fadeInUp" data-wow-duration="1.5s"><img src="images/icon/30.png" alt=""> Car Rentals</a>
+                        </li>
+                        <li>
+                            <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn wow fadeInUp" data-wow-duration="2s"><img src="images/icon/1.png" alt=""> Hotel</a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <!--Seide 2-->
+    <section>
+        <div class="rows pad-bot-redu tb-space">
+            <div class="container">
+                <!-- TITLE & DESCRIPTION -->
+                <div class="spe-title">
+                    <h2>Top <span>Tour hàng đầu</span></h2>
+                    <div class="title-line">
+                        <div class="tl-1"></div>
+                        <div class="tl-2"></div>
+                        <div class="tl-3"></div>
+                        <p>Trang web du lịch được yêu thích, lựa chọn hàng đầu của người việt.</p><i class="fas fa-heart-circle"></i>
+                    </div>
+                    
+                </div>
+                <div>
+                <th:block th:each= " chitiettour : ${tour}" >
+                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
+                        <!-- OFFER BRAND -->
+                        <div class="band"> <img src="images/band.png" alt="" /> </div>
+                        <!-- IMAGE -->
+                        <div class="v_place_img"> <img th:src="@{'/view/images/' + ${chitiettour.hinhanh}}" alt="Tour Booking" title="Tour Booking" /> </div>
+                        <!-- TOUR TITLE & ICONS -->
+                        <div class="b_pack rows">
+                            <!-- TOUR TITLE -->
+                            <div class="col-md-8 col-sm-8">
+                                <h4><a th:href="@{'/view/chitiet/' + ${chitiettour.idtour} }"  th:text="${chitiettour.tentour}" ></a> <span >[[${chitiettour.diadiem.diemden}]]</span></h4>
+                            </div>
+                            <!-- TOUR ICONS -->
+                            <div class="col-md-4 col-sm-4 pack_icon">
+                                <ul>
+                                    <li>
+                                        <a href=""><img src="images/clock.png" alt="Date" title="Tour Timing" /> </a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="images/info.png" alt="Details" title="View more details" /> </a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="images/price.png" alt="Price" title="Price" /> </a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="images/map.png" alt="Location" title="Location" /> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                      </th:block>
+						
+                </div>
+            </div>
+        </div>
+    <section>
+       
+        <!--Silde 3-->
+        <section>
+            <div class="rows tb-space pad-top-o pad-bot-redu">
+                <div class="container">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-titlet">
+   <h2 style="margin: 0px;
+    padding-bottom: 20px;    margin-top: 0px;
+    font-size: 44px;
+    text-align: center;">Tour <span style=" color: #f4364f;
+    font-size: 44px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;">nổi bật</span> </h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p style="margin-bottom: 0px;
+    font-size: 20px;
+    font-weight: 400;
+    padding-top: 12px;
+    color: #888;
+    font-family: 'Quicksand', sans-serif;    text-align: center;">Hơn 1000 tour nổi bật, đang chờ bạn khám phá.</p>
+                    </div>
+                    <!-- CITY -->
+                   
+                    
+                  
+                      <th:block th:each= " chitiettour : ${tour}">
+                    <div class="col-md-3"style="float:left;">
+                        <a href="">
+                            <div class="">
+                                <div class="tour-mig-lc-img"><img width="270px" height="200px" src="images/gallery/s3.jpeg" alt=""> </div>
+                                <div class="tour-mig-lc-con tour-mig-lc-con2">
+                                    <h5>[[${chitiettour.tentour}]]</h5>
+                                    <p> Còn [[${chitiettour.soluongcon}]] chỗ</p>
+                                </div>
+                                <h4><a th:href="@{'/view/chitiet/' + ${chitiettour.idtour} }" ></a></h4>
+                            </div>
+                        </a>
+                    </div>
+                      </th:block>
+                </div>
+            </div>
+        </section>
+        <!-- setion free -->
+        <section>
+            <div class="offer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="offer-l"> <span class="ol-1"></span> <span class="ol-2"><i class='bx bxs-star' ></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> <span class="ol-4">Tour Chất, siêu rẻ</span>                            <span class="ol-3"></span> <span class="ol-5">1tr500 VNĐ+ </span>
+                                <ul>
+                                    <li class="wow fadeInUp" data-wow-duration="0.5s">
+                                        <a href="index.htm#!" class="waves-effect waves-light btn-large offer-btn"><img src="images/icon/dis1.png" alt="">
+                                        </a><span>Free WiFi</span>
+                                    </li>
+                                    <li class="wow fadeInUp" data-wow-duration="0.7s">
+                                        <a href="index.htm#!" class="waves-effect waves-light btn-large offer-btn"><img src="images/icon/dis2.png" alt=""> </a><span>Breakfast</span>
+                                    </li>
+                                    <li class="wow fadeInUp" data-wow-duration="0.9s">
+                                        <a href="index.htm#!" class="waves-effect waves-light btn-large offer-btn"><img src="images/icon/dis3.png" alt=""> </a><span>Pool</span>
+                                    </li>
+                                    <li class="wow fadeInUp" data-wow-duration="1.1s">
+                                        <a href="index.htm#!" class="waves-effect waves-light btn-large offer-btn"><img src="images/icon/dis4.png" alt=""> </a><span>Television</span>
+                                    </li>
+                                    <li class="wow fadeInUp" data-wow-duration="1.3s">
+                                        <a href="index.htm#!" class="waves-effect waves-light btn-large offer-btn"><img src="images/icon/dis5.png" alt=""> </a><span>GYM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="offer-r">
+                                <div class="or-1"> <span class="or-11">Đặt</span> <span class="or-12">ngay</span> </div>
+                                <div class="or-2"> <span class="or-21">Giảm</span> <span class="or-22">70%</span> <span class="or-23">Off</span> <span class="or-24">use code: RG5481WERQ</span> <span class="or-25"></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- su kien sap dien ra -->
+        <section>
+            <div class="rows tb-space">
+                <div class="container events events-1" id="inner-page-title">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-title">
+                        <h2>Tour <span>sự kiện</span> Sắp diễn ra</h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p>Trang web du lịch hàng đầu trong nước. Đặt các gói du lịch và tận hưởng kỳ nghỉ của bạn với trải nghiệm đặc biệt.</p>
+                    </div>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Event Name.." title="Type in a name">
+                    <table id="myTable">
+                        <tbody>
+                            <tr >
+                                <th>#</th>
+                                <th>Hình ảnh</th>
+                                <th class="e_h1">Tên tour</th>
+                                <th class="e_h1">Khởi hành</th>
+                                <th class="e_h1">SL còn</th>
+                                <th class="e_h1">Ngày đi</th>
+                                <th class="e_h1">Thời gian</th>
+                                <th class="e_h1">giá</th>
+                                <th>Đặt</th>
+                            </tr>
+                            
+                            <tr th:each= " tour : ${tour}">
+                                <td>Chi tiết tour</td>
+                                <td><img width="100px" height="100px" src="images/gallery/s4.jpeg" alt="" /></td>
+                                <td><a href="" th:text="${tour.tentour}">Tour du lich miền bắc</a></td>
+                                <td class="e_h1" >Hà Nội</td>
+                                <td class="e_h1"th:text="${tour.loaitour.tenloaitour}">10</td>
+                                <td class="e_h1 "th:text="${tour.phuongtien.tenphuongtien}">20/12/2022</td>
+                                <td class="e_h1">
+                                   3 Ngày /
+                                    2 Đêm 
+                                </td>
+                                <td class="e_h1">5.000.000</td>
+                               
+                                <td><a href="" class="link-btn">Đặt ngay</a></td>
+                              
+                                <td><a href="javascript:void(0)" class="link-btn">Hết chỗ</a> </td>
+                                
+                            </tr>
+                          
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!-- tour yeu thich gan day -->
+        <section>
+            <div class="rows tb-space pad-top-o pad-bot-redu">
+                <div class="container">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-title">
+                        <h2>Tour<span> Yêu thích gần đây</span> </h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p>Niềm vui của khách hàng là niềm tự hào của chúng tôi.</p>
+                    </div>
+                    <!-- HOTEL GRID -->
+                    <div class="to-ho-hotel">
+                       
+                        <div class="col-md-4">
+                            <div class="to-ho-hotel-con">
+                                <div class="to-ho-hotel-con-1">
+                                    <div class="hot-page2-hli-3"> <img src="images/hci1.png" alt=""> </div>
+                                    <div class="hom-hot-av-tic">Số lượng còn: 1</div><img width="300px" height="300px" src="images/gallery/s6.jpeg" alt=""></div>
+                                <div class="to-ho-hotel-con-23">
+                                    <div class="to-ho-hotel-con-2">
+                                        <a href="">
+                                            <h4>Tour nghĩ dưỡng</h4>
+                                        </a>
+                                    </div>
+                                    <div class="to-ho-hotel-con-3">
+                                        <ul>
+                                            <li>Điểm khởi hành: Bến xe miền đông
+                                                <br/>Thời gian: 4 Ngày, 3 đêm 
+                                                <div class="dir-rat-star ho-hot-rat-star">Ngày khởi hành: 30/4/2022</div>
+                                            </li>
+                                            <li><span class="ho-hot-pri-dis">$720</span><span class="ho-hot-pri">Giá: 5.000.000 VNĐ</span> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script th:src="@{/view/js/ajax.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 	<script th:src="@{/admin/js/jquery-3.2.1.min.js}"></script>
+  </body>
+  
+</html>

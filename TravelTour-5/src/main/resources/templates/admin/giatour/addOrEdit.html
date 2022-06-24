@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+	<!--sidebar end-->
+	<!--main content start-->
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head" ></h2>
+			<div th:if="@{message != null}" class="alert alert-primary">
+        			<i>[[${message}]]</i>
+          </div>
+			<form th:action="@{/admin/giatour/saveOrUpdate}" method="post"
+				th:object="${giatour}">
+				<div class="row" >
+					<div class="col justify-content-center">
+						<section class="panel">
+ 
+							<div class="panel-body">
+								<div class="position-center">
+									<form role="form">
+									
+										<div class="form-group">
+											<label for="idtinh" th:if="${giatour.isEdit}">ID Gía</label>
+											<input type="hidden" th:field="*{isEdit}"/>
+											 <input type="text"
+												class="form-control" th:if="${giatour.isEdit}" readonly name="idgiatour" th:field="*{idgiatour}" id="idgiatour"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('idgiatour')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+										 <div class="form-group">
+                                <label for="tengiatour">Chọn tour</label>
+                                <select class="form-control" name="idgiatour" th:field="*{idtour}"  id="idtour">
+                                  <option th:each="item : ${tour} " th:value="${item.idtour}"
+                                  th:text="${item.tentour}" th:selected="${item.idtour == giatour.idtour}"  >Ten tour</option>
+                           
+                                </select>
+                              </div>	
+                                
+										<div class="form-group">
+											<label for="idtinh">Giá Người Lớn</label>
+											 <input type="text"
+												class="form-control" name="idtinh" th:field="*{gianguoilon}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('gianguoilon')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+										<div class="form-group">
+											<label for="idtinh">Giá Trẻ Em</label>
+											 <input type="text"
+												class="form-control" name="idtinh" th:field="*{giatreem}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('giatreem')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+										<button class="btn btn-primary">
+											<i class="fas fa-save"></i> 
+											<span th:if="${giatour.isEdit}"></span>Update
+											<span th:unless="${giatour.isEdit}">Save</span>
+										</button>
+
+										<a th:href="@{/admin/giatour}" class="btn btn-success">List
+											giá</a>
+										<button class="btn btn-secondary">Reset</button>
+
+									</form>
+								</div>
+		<h1>k</h1>
+							</div>
+						</section>
+
+					</div>
+				</div>
+
+			</form>
+
+		</section>
+
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

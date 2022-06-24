@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head"th:text="${diadiem.isEdit ? 'Sửa thông tin địa điểm du lịch' : 'Thêm địa điểm du lịch'} " ></h2>
+			<form th:action="@{/admin/diadiem/saveOrUpdate}" method="post"
+				th:object="${diadiem}">
+				<div class="row">
+					<div class="col justify-content-center">
+						<section class="panel">
+
+							<div class="panel-body">
+								<div class="position-center">
+									<form role="form">
+									
+										<div class="form-group">
+											<label for="idtinh">ID dia diem</label>
+											<input type="hidden" th:field="*{isEdit}"/>
+											 <input type="text"
+												class="form-control" readonly name="iddiadiem" th:field="*{iddiadiem}" id="iddiadiem"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('iddiadiem')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+										 <div class="form-group">
+                                <label for="tendiadiem">Ten tinh</label>
+                                <select class="form-control" name="idtinh"   id="idtinh">
+                                 <option value="0">--- Chọn tỉnh ---</option>
+                                  <option th:each="item : ${tinh} " th:value="${item.idtinh}"
+                                  th:text="${item.tentinh}" th:selected="${item.idtinh == diadiem.idtinh}" >Ten tour</option>
+                           
+                                </select>
+                                </div>
+										<div class="form-group">
+											<label for="idtinh">Ten dia diem</label>
+											 <input type="text"
+												class="form-control" name="diemden" th:field="*{diemden}" id="diemden"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('diemden')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+									   
+        
+										<button class="btn btn-primary">
+											<i class="fas fa-save"></i> 
+											<span th:if="${diadiem.isEdit}"></span>Update
+											<span th:unless="${diadiem.isEdit}">Save</span>
+										</button>
+
+										<a th:href="@{/admin/diadiem}" class="btn btn-success">List
+											categories</a>
+										<button class="btn btn-secondary">Reset</button>
+
+									</form>
+								</div>
+
+							</div>
+						</section>
+
+					</div>
+				</div>
+
+			</form>
+
+		</section>
+
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

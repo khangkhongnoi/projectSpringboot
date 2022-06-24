@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Typography :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- bootstrap-css -->
+ <link rel="stylesheet" th:href="@{/admin/css/bootstrap.min.css}" > 
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link th:href="@{/admin/css/style.css}" rel='stylesheet' type='text/css' />
+<link th:href="@{/admin/css/style-responsive.css}" rel="stylesheet"/>
+<!-- font CSS -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- font-awesome icons -->
+<link th:href="@{css/font-awesome.css}" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+  <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+</head>
+
+<body>
+<section id="container">
+<!--header start-->
+<header class="header fixed-top clearfix">
+<!--logo start-->
+<div class="brand">
+
+    <a href="index.html" class="logo">
+        VISITORS
+    </a>
+    <div class="sidebar-toggle-box">
+        <div class="fa fa-bars"></div>
+    </div>
+</div>
+<!--logo end-->
+
+<div class="nav notify-row" id="top_menu">
+    <!--  notification start -->
+    <ul class="nav top-menu">
+        <!-- settings start -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-tasks"></i>
+                <span class="badge bg-success">8</span>
+            </a>
+            <ul class="dropdown-menu extended tasks-bar">
+                <li>
+                    <p class="">You have 8 pending tasks</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info clearfix">
+                            <div class="desc pull-left">
+                                <h5>Target Sell</h5>
+                                <p>25% , Deadline  12 June’13</p>
+                            </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="45">
+                            <span class="percent"></span>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info clearfix">
+                            <div class="desc pull-left">
+                                <h5>Product Delivery</h5>
+                                <p>45% , Deadline  12 June’13</p>
+                            </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="78">
+                            <span class="percent"></span>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info clearfix">
+                            <div class="desc pull-left">
+                                <h5>Payment collection</h5>
+                                <p>87% , Deadline  12 June’13</p>
+                            </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="60">
+                            <span class="percent"></span>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="task-info clearfix">
+                            <div class="desc pull-left">
+                                <h5>Target Sell</h5>
+                                <p>33% , Deadline  12 June’13</p>
+                            </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="90">
+                            <span class="percent"></span>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="external">
+                    <a href="#">See All Tasks</a>
+                </li>
+            </ul>
+        </li>
+        <!-- settings end -->
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-important">4</span>
+            </a>
+            <ul class="dropdown-menu extended inbox">
+                <li>
+                    <p class="red">You have 4 Mails</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="images/3.png"></span>
+                                <span class="subject">
+                                <span class="from">Jonathan Smith</span>
+                                <span class="time">Just now</span>
+                                </span>
+                                <span class="message">
+                                    Hello, this is an example msg.
+                                </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" th:src="@{admin/images/1.png}"></span>
+                                <span class="subject">
+                                <span class="from">Jane Doe</span>
+                                <span class="time">2 min ago</span>
+                                </span>
+                                <span class="message">
+                                    Nice admin template
+                                </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="images/3.png"></span>
+                                <span class="subject">
+                                <span class="from">Tasi sam</span>
+                                <span class="time">2 days ago</span>
+                                </span>
+                                <span class="message">
+                                    This is an example msg.
+                                </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="photo"><img alt="avatar" src="images/2.png"></span>
+                                <span class="subject">
+                                <span class="from">Mr. Perfect</span>
+                                <span class="time">2 hour ago</span>
+                                </span>
+                                <span class="message">
+                                    Hi there, its a test
+                                </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">See all messages</a>
+                </li>
+            </ul>
+        </li>
+        <!-- inbox dropdown end -->
+        <!-- notification dropdown start-->
+        <li id="header_notification_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                <i class="fa fa-bell-o"></i>
+                <span class="badge bg-warning">3</span>
+            </a>
+            <ul class="dropdown-menu extended notification">
+                <li>
+                    <p>Notifications</p>
+                </li>
+                <li>
+                    <div class="alert alert-info clearfix">
+                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                        <div class="noti-info">
+                            <a href="#"> Server #1 overloaded.</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="alert alert-danger clearfix">
+                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                        <div class="noti-info">
+                            <a href="#"> Server #2 overloaded.</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="alert alert-success clearfix">
+                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                        <div class="noti-info">
+                            <a href="#"> Server #3 overloaded.</a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </li>
+        <!-- notification dropdown end -->
+    </ul>
+    <!--  notification end -->
+</div>
+<div class="top-nav clearfix">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+        <li>
+            <input type="text" class="form-control search" placeholder=" Search">
+        </li>
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img alt="" src="images/2.png">
+                <span class="username">John Doe</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+            </ul>
+        </li>
+        <!-- user login dropdown end -->
+       
+    </ul>
+    <!--search & user info end-->
+</div>
+</header>
+<!--header end-->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="sub-menu">
+                    <a  th:href="@{/admin/tour/add}">
+                        <i class="fa fa-book"></i>
+                        <span>Tour</span>
+                    </a>
+                  
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/loaitour/add}">
+                        <i class="fa fa-glass"></i>
+                        <span>Loai Tour</span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a th:href="@{/admin/tinh/add}">
+                        <i class="fa fa-bullhorn"></i>
+                        <span>Tỉnh Thành </span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/diadiem/add}">
+                        <i class="fa fa-th"></i>
+                        <span>Địa Điểm</span>
+                    </a>
+                    
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/phuongtien/add}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Phương Tiện</span>
+                    </a>
+                    
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/giatour/add}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Gía Tour</span>
+                    </a>
+                    
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/khachhang/add}">
+                        <i class="fa fa-envelope"></i>
+                        <span>Khách Hàng </span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/chitiettour/add}">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>Hình Ảnh</span>
+                    </a>
+                   
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{/admin/nhanvien/add}">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>Nhân Viên</span>
+                    </a>
+                   
+                </li>
+                
+                <li class="sub-menu">
+                    <a th:href="@{/admin/hoadon}">
+                        <i class="fa fa-glass"></i>
+                        <span>Hóa Đơn</span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a th:href="@{/admin/taikhoan/add}">
+                        <i class="fa fa-user"></i>
+                        <span>Login Page</span>
+                    </a>
+                </li>
+            </ul>            </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+</section>
+<img alt="avatar" th:src="@{admin/images/1.png}">
+	<section>
+            <div layout:fragment="content"></div>
+        </section>
+      <section>
+      		<div layout:fragment="listtinh"></div>
+      </section>
+       <section>
+       	<div layout:fragment="addtour"></div>
+       </section>
+</body>
+
+<script th:src="@{/admin/js/bootstrap.js}"></script>
+<script th:src="@{/admin/js/jquery.dcjqaccordion.2.7.js}"></script>
+<script th:src="@{/admin/js/scripts.js}"></script>
+<script th:src="@{/admin/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/admin/js/jquery.nicescroll.js}"></script>
+<script th:src="@{/admin/js/jquery-3.2.1.min.js}"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script th:src="@{/admin/js/jquery.scrollTo.js}"></script>
+
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+	<!--sidebar end-->
+	<!--main content start-->
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head" ></h2>
+			<div th:if="@{message != null}" class="alert alert-primary">
+        			<i>[[${message}]]</i>
+          </div>
+			<form th:action="@{/admin/hinhanh/saveOrUpdate}" method="post" enctype="multipart/form-data"
+				th:object="${hinhanh}">
+				<div class="row" >
+					<div class="col justify-content-center">
+						<section class="panel">
+ 
+							<div class="panel-body">
+								<div class="position-center">
+									<form role="form">
+									
+										<div class="form-group">
+											<label for="idtinh" th:if="${hinhanh.isEdit}">ID Hình Ảnh</label>
+											<input type="hidden" th:field="*{isEdit}"/>
+											 <input type="text"
+												class="form-control" th:if="${hinhanh.isEdit}" readonly name="idgiatour" th:field="*{idhinhanh}" id="idgiatour"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('idhinhanh')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+										 <div class="form-group">
+                                <label for="tengiatour">Chọn Tour</label>
+                                <select class="form-control" name="idgiatour" th:field="*{idtour}"  id="idtour">
+                                  <option th:each="item : ${tour} " th:value="${item.idtour}"
+                                  th:text="${item.tentour}" th:selected="${item.idtour == hinhanh.idtour}"  >Ten tour</option>
+                           
+                                </select>
+                              </div>	
+                                
+										<script>
+                            function chomesFile(fieldInput){
+                                if(fieldInput.files && fieldInput.files[0])
+                                var reader = new FileReader();
+                                reader.onload = function(e){
+                                    $('#image').attr('src', e.target.result);
+                                }
+                                reader.readAsDataURL(fieldInput.files[0]);
+                            }
+    
+                        </script>
+                        <img id="image" class="img-fluid" src="" width="50%" alt="">
+                        <div class="form-group">
+                          <label for="hinhanh">Image File</label>
+                          <input type="file" onchange="chomesFile(this)" name="hinhanh" th:field="*{hinhanh}" id="hinhanh" class="form-control" placeholder="hinhanh" aria-describedby="helpId">
+                          <small id="helpId" class="text-muted">Hinh anh</small>
+                        </div>
+										
+										<button class="btn btn-primary">
+											<i class="fas fa-save"></i> 
+											<span th:if="${hinhanh.isEdit}"></span>Update
+											<span th:unless="${hinhanh.isEdit}">Save</span>
+										</button>
+
+										<a th:href="@{/admin/hinhanh}" class="btn btn-success">List
+											Hình Ảnh</a>
+										<button class="btn btn-secondary">Reset</button>
+
+									</form>
+								</div>
+
+							</div>
+						</section>
+
+					</div>
+				</div>
+
+			</form>
+
+		</section>
+
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

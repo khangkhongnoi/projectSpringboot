@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head">Them chi tiet tour</h2>
+			<form th:action="@{/admin/chitiettour/saveOrUpdate}" method="post"
+				th:object="${chitiettour}">
+				<div class="row">
+					<div class="col justify-content-center">
+						  <section class="panel">
+                        <div class="panel-body">
+                            <div class="">
+                                <form role="form">
+                                <input type="hidden" th:field="*{isEdit}"/>
+										<div class="form-group" th:field="*{isEdit}">
+											<label for="idtinh" th:if="${chitiettour.isEdit}">ID Khach hang</label>
+											
+											 <input type="text"
+												class="form-control" th:if="${chitiettour.isEdit}" readonly name="idtinh" th:field="*{idchitiettour}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('idchitiettour')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+                          <div class="form-group">
+                                <label for="tenloaitour">Chọn tour</label>
+                                <select class="form-control" name="idloaitour" th:field="*{idtour}"  id="idtour">
+                                  <option th:each="item : ${tour} " th:value="${item.idtour}"
+                                  th:text="${item.tentour}" th:selected="${item.idtour == chitiettour.idtour}"  >Ten tour</option>
+                           
+                                </select>
+                              </div>
+                                <div class="form-group">
+                                        <label for="idtinh">Ngày sinh</label> <input type="datetime-local"
+												class="form-control" name="ngaydi"  th:field="*{ngaydi}" 
+												id="ngaysinh" aria-describedby="ngaysinh" placeholder="ngaydi">
+											<small
+                                            id="tinhhe" class="form-text text-muted">ngay di is requires or invalid</small>
+                                    </div>
+                                <div class="form-group">
+                                        <label for="idtinh">Ngày về</label> <input type="datetime-local"
+												class="form-control" name="ngaysinh"  th:field="*{ngayve}" 
+												id="ngaysinh" aria-describedby="ngayve" placeholder="ngayve">
+											<small
+                                            id="tinhhe" class="form-text text-muted">ngayve is requires or invalid</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="idtinh">Số lượng</label>
+                                         <input type="text"
+                                            class="form-control" name="idtinh" th:field="*{soluongcon}" id="idtinh"
+                                            aria-describedby="tinhhe" placeholder="ID Tinh">
+                                             
+                                    </div>
+                               <div class="form-group">
+                                 <label for="ghichu">Ghi chú</label>
+                                 <textarea class="form-control" name="ghichu"  th:fireld="*{ghichu}" id="ghichu" rows="3"></textarea>
+                               </div>
+                            </form>
+                            </div>
+    
+                        </div>
+                    </section>
+            </div>
+            <div class="col-lg-5">
+                <section class="panel">
+                    <div class="panel-body">
+                    
+                        <script>
+                            function chomesFile(fieldInput){
+                                if(fieldInput.files && fieldInput.files[0])
+                                var reader = new FileReader();
+                                reader.onload = function(e){
+                                    $('#image').attr('src', e.target.result);
+                                }
+                                reader.readAsDataURL(fieldInput.files[0]);
+                            }
+    
+                        </script>
+                        <img id="image" class="img-fluid" src="" width="50%" alt="">
+                        <div class="form-group">
+                          <label for="hinhanh">Image File</label>
+                          <input type="file" onchange="chomesFile(this)" name="hinhanh" th:field="*{hinhanh}" id="hinhanh" class="form-control" placeholder="hinhanh" aria-describedby="helpId">
+                          <small id="helpId" class="text-muted">Hinh anh</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" th:text="${chitiettour.isEdit ? 'Update' : 'Save'  } " ><i class="fas fa-save"></i>
+                           
+                            Save
+                            </button>
+                            
+                            </button>
+
+                    <a  th:href="@{/admin/chitiettour}" class="btn btn-success">List tour</a>
+                    <button class="btn btn-secondary">Reset</button>
+                    
+                    </div>
+                </section>
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

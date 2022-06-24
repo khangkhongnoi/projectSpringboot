@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
+   ">
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link th:href="@{/view/css/style.css}" rel='stylesheet' type='text/css' />
+  </head>
+
+  <body>
+      <!--Navbar top-->
+    <div class="top-nav" id="home">
+        <div class="container">
+            <div class="row justify-content-between ">
+                <div class="col-auto">
+                    <p>
+                        <span><i class='bx bxs-map'></i></span>
+                        <span>Cần Thơ,Việt Nam</span>
+                    </p>
+                    <p>
+                        <span><i class='bx bxs-phone-call'></i></span>
+                        <span>+84357534716</span>
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-instagram-alt' ></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img class="ss" src="/view/images/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tour</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Danh mục
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            
+            </ul>
+        
+              
+          </div>
+                    <div class="login">
+            <a th:if="${#request.userPrincipal == null}" th:href="@{/login}"><span >Đăng nhập [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/view/alogin}"><span > [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal == null}" href=""><span>Đăng ký</span></a>
+           <a th:if="${#request.userPrincipal != null}" th:href="@{/logoutSuccessful}"><span>Đăng xuất</span></a>
+            		
+            		<a  href="@{/view/alogin}" class="btn btn-danger">Chuyển</a>
+        </div>
+        <div class="cart">
+            <a id="giohang">
+            	<div class="soluonggiohang gh"><span  th:if="${soluonggiohang > 0}"   th:text="${soluonggiohang}" ></span></div>
+            	
+            </a>
+        </div>
+             <div class="image">
+            <img width="25%" heigh="20px"  src="/view/images/giohang.png" alt="">
+        </div>
+        </div>
+        <!-- <div class="image">
+            <img width="50px" heigh="20px" src="images/giohang.png" alt="">
+        </div> -->
+      </nav>
+      <button class="btn btn-danger" id="xoa-giohang">Xóa</button>
+      <button class="btn btn-danger" id="check"> Check</button>
+	<div class="container">
+		<div class="col-md-12">
+		<table class="table table-light table-hover border-primar" id="table-tour">
+              <thead>
+              <tr>
+               	  <th scope="col"><input type="checkbox" id="checkon" name="vehicle1" ></td></th>
+                <th scope="col">Tên Tour</th>
+                 <th scope="col">Giá Tour Người Lớn</th>
+                 <th scope="col">Số Lượng Người Lớn</th>
+                 <th scope="col">Giá Tour Trẻ Em</th>
+                 <th scope="col">Số Lượng Trẻ Em</th>
+                 <th scope="col">Thành Tiền</th>
+                <th scope="col">So luong</th>
+               
+              
+              </tr>
+            </thead>
+            <tbody>
+              
+       <tr th:each= " giohang : ${giohang}" >
+              	<td><input type="checkbox" id="checkgia" name="vehicle1" th:value="${giohang.idtour}"></td>
+                <td class="tentour" th:value="${giohang.idtour}" th:text="${giohang.tentour}"> </td>
+                <td class="gianguoilon" th:value="${giohang.gianguoilon}" th:text="${giohang.gianguoilon}" id="gianguoilon"></td>
+                <td ><input class="soluong-nguoilon" min="1" id="songuoilon"  type="number" th:value="${giohang.soluongnguoilon}" /></td>
+                <td class="giatreem" th:value="${giohang.giatreem}" th:text="${giohang.giatreem}" id="giatreem"></td>
+             	<td ><input class="soluong-treem" min="0" id="sotreem" type="number" th:value="${giohang.soluongtreem}" /></td>
+             	 <td class="thanhtien" id="thanhtien" > 10000</td>
+             	
+             	<td class="btn btn-danger xoa-giohang">Xóa</td>
+            
+    </tr>
+            </tbody>
+          </table>
+          <h4 class="khang">Tổng tiền : <span style="color:red;" id="tongtien" ></span> </h4><br />
+		</div>
+		
+		<input type="submit" class="btn btn-primary" value="Đặt tour" />
+	</div>
+	<script>
+	//var tongtiensp = 0;
+	//$(".gianguoilon").each(function(){
+	//	var soluong = $(this).closest("tr").find(".soluong-giohang").attr("value");
+	//	var giatien = $(this).attr("value");
+	//	var format = parseFloat(giatien).toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
+		
+	//	var tongtien = soluong * parseFloat(giatien);
+	//	var format1 = tongtien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
+	//	var giatien1 = $("#gianguoilon").text();
+	//	 tongtiensp = tongtiensp + parseFloat(format);
+	//	$(this).closest("tr").find(".gianguoilon").html(format1+ "."+ "000");
+		
+	//	$("#tongtien").html(tongtiensp + "." + "000");
+		
+		//alert(giatien1);
+	//}
+ // thanh tien
+$(document).ready(function(){
+	$("#xoa-giohang").click(function(){
+		$("#table-tour input:checked").each(function(){
+			var idtour = $(this).closest("tr").find(".tentour").attr("value");
+			var self = $(this);
+			$.ajax({
+				url:"/giohang/XoaGioHang",
+				type: "GET",
+				data:{
+				idtour:idtour,
+				},
+				success: function(value){
+					self.closest("tr").remove();
+					GTTGH();
+				}
+			}) 
+		})
+	})
+ $("#check").click(function(){
+		$("#table-tour input:checked").each(function(){
+			alert($(this).val());
+		})
+	 })
+ 	$("#checkon").change(function(){
+ 		if(this.checked){
+ 			$("#table-tour input").each(function(){
+ 				$(this).attr("checked", true);
+ 			})
+ 		}else{
+ 			$("#table-tour input").each(function(){
+ 				$(this).attr("checked", false);
+ 			})
+ 		}
+ 	})
+});
+	</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script th:src="@{/admin/js/bootstrap.js}"></script>
+<script th:src="@{/admin/js/jquery.dcjqaccordion.2.7.js}"></script>
+<script th:src="@{/admin/js/scripts.js}"></script>
+ <script th:src="@{/view/js/ajax.js}"></script>
+<script th:src="@{/admin/js/jquery.nicescroll.js}"></script>
+<script th:src="@{/admin/js/jquery-3.2.1.min.js}"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script th:src="@{/admin/js/jquery.scrollTo.js}"></script>
+ <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+  </body>
+  
+</html>

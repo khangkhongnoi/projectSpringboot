@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+	<!--sidebar end-->
+	<!--main content start-->
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head" th:text="${loaitour.isEdit ? 'Sửa thông tin nhân viên' : 'Thêm nhân viên'} "></h2>
+			<div th:if="@{message != null}" class="alert alert-primary">
+        			<i>[[${message}]]</i>
+          </div>
+			<form th:action="@{/admin/loaitour/saveOrUpdate}" method="post"
+				th:object="${loaitour}">
+				<div class="row" >
+					<div class="col justify-content-center">
+						<section class="panel">
+						
+							             
+							<div class="panel-body">
+								<div class="position-center">
+									<form role="form">
+									
+										<div class="form-group">
+											<label for="idtinh" th:if="${loaitour.isEdit}">ID loại tour</label>
+											<input type="hidden" th:field="*{isEdit}"/>
+											 <input type="text"
+												class="form-control" th:if="${loaitour.isEdit}" readonly name="idloaitour" th:field="*{idloaitour}" id="idloaitour"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('idloaitour')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+
+										<div class="form-group">
+											<label for="idtinh">Tên loại tour</label>
+											 <input type="text"
+												class="form-control" name="idtinh" th:field="*{tenloaitour}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('tenloaitour')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+										
+										<button class="btn btn-primary">
+											<i class="fas fa-save"></i> 
+											<span th:if="${loaitour.isEdit}"></span>Update
+											<span th:unless="${loaitour.isEdit}">Save</span>
+										</button>
+
+										<a th:href="@{/admin/loaitour}" class="btn btn-success">List
+											Loại tour</a>
+										<button class="btn btn-secondary">Reset</button>
+
+									</form>
+								</div>
+
+							</div>
+						</section>
+
+					</div>
+				</div>
+
+			</form>
+
+		</section>
+
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

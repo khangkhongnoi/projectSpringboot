@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/mob.css">
+        <link rel="stylesheet" href="fonts/fontawesome-webfont.eot#iefix-v=4.7.0">
+        <link rel="stylesheet" href="fonts/fontawesome-webfont.woff2-v=4.7.0.htm">
+        <link rel="stylesheet" href="fonts/fontawesome-webfont.eot#iefix-v=4.7.0">
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/view/css/style.css}" rel='stylesheet' type='text/css' />
+     <link th:href="@{/view/css/materialize.css}" rel='stylesheet' type='text/css' />
+      <link th:href="@{/view/css/bootstrap.min.css}" rel='stylesheet' type='text/css' />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+            <!-- TOP SEARCH BOX -->
+            <div class="search-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="search-form">
+                            <form action ="" method="get" class="tourz-search-form">
+                                <div class="input-field">
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" name ="tk" placeholder="tìm kiếm ngày khởi hành, địa điểm, giá, tên tour" id="select-search" class="autocomplete" value="">
+                                </div>
+                                <div class="input-field">
+                                    <input type="submit" value="Tìm kiếm" class="waves-effect waves-light tourz-sear-btn"> </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TOP SEARCH BOX -->
+        </section>
+        <!--END HEADER SECTION-->
+ 
+        <!--====== BANNER ==========-->
+        <section>
+        
+            <div class="rows inner_banner inner_banner_4">
+                <div class="container">
+                 <h2>Còn  chỗ -</span>  </h2>
+                    
+                    <ul>
+                        <li><a href="{{ route('travel.index.index') }}">Trang chủ</a>
+                        </li>
+                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
+                        <li><a ></a>
+                        </li>
+                    </ul>
+                    <p>Hãy đặt ngay nhiều ưu đãi đang chờ bạn khám phá! </p>
+                </div>
+            </div>
+            
+        </section>
+                 
+        <!--====== TOUR DETAILS - BOOKING ==========-->
+        <section>
+            <div class="rows banner_book" id="inner-page-title">
+                <div class="container">
+                    <div class="banner_book_1">
+                        <ul>
+                            <li class="dl1"> Khởi hành tại  </li>
+                            <li class="dl2">Giá : </li>
+                            <li class="dl3">Thời gian : </li>
+                         
+                            <li class="dl4">Đặt ngay</a>  </li>
+                            <li class="dl4"> <a>Thêm giỏ hàng</a> </li>
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== TOUR DETAILS ==========-->
+        <section>
+            <div class="rows inn-page-bg com-colo">
+                <div class="container inn-page-con-bg tb-space">
+                    <div class="col-md-9">
+                        <!--====== TOUR TITLE ==========-->
+                        <div class="tour_head">
+                            <h2> <span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span><span class="tour_rat">4.5</span></h2> </div>
+                        <!--====== TOUR DESCRIPTION ==========-->
+                        <div class="tour_head1">
+                            <h3>Giới thiệu tour</h3>
+    
+                            <p></p>
+                            <p></p>
+                        </div>
+                        
+                        <!--====== TOUR LOCATION ==========-->
+                        <div class="tour_head1 tout-map map-container">
+                            <h3>Bản đồ</h3>
+                            <iframe src="" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        
+                        <!--====== DURATION ==========-->
+                        <div class="tour_head1 l-info-pack-days days">
+                            <h3>Chương trình tour</h3>
+                            <ul>
+                              
+                                <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <h4><span></span> </h4>
+                                    <p></p>
+                                </li>
+                             
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="dir-rat">
+                                <div class="dir-rat-inn dir-rat-title">
+                                    <h3>Để lại bình luận!</h3>
+                                    <p>Nếu bạn có thắc mắc gì về tour hãy để lại bình luận</p>
+                                    <!-- nút like fb -->
+                                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="10px" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                </div>
+                                <div class="dir-rat-inn">
+                                    <form  class="dir-rat-form" method="post">
+                                     
+                                        <div class="form-group col-md-12 pad-left-o">
+                                            <textarea placeholder="Nhập bình luận" name="noidung"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12 pad-left-o">
+                                            <input type="submit" value="SUBMIT" class="link-btn"> </div>
+                                    </form>
+                                    
+                                </div>
+                                <!--COMMENT RATING-->
+                               
+    
+                                <div class="dir-rat-inn dir-rat-review">
+                                    <div class="row">
+                                        <div class="col-md-3 dir-rat-left"> <img src="images/reviewer/4.jpeg" alt="">
+                                            <p>{{ $val->ten }}<span>{{ $val->ngaygio }}</span> </p>
+                                        </div>
+                                        <div class="col-md-9 dir-rat-right">
+                                            <div class="dir-rat-star"> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                            <p>{{ $val->noidung }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tour_r">
+                        <!--====== hiển thị 1 tour nổi bật ==========-->
+                     
+                        <div class="tour_right tour_offer">
+                            <div class="band1"><img src="images/offer.png" alt="" /> </div>
+                            <p>Đặc biệt</p>
+                            <h4>{{ $val->gianguoilon }}</h4>
+                          
+                            <a href="{{ route('travel.tour.phieudat',['id' => $val->id_chitiet,'slug'=>$slug]) }}" class="link-btn">Đặt chỗ</a> </div>
+                           
+                            <a href="javascript:void(0)" class="link-btn">Hết chỗ</a> </div>
+                      
+                        <!--====== TRIP INFORMATION ==========-->
+                        <div class="tour_right tour_incl tour-ri-com">
+                            <h3>Thông tin tour</h3>
+                            <ul>
+                                <li>Lịch trình : </li>
+                                <li>Ngày đi:</li>
+                                <li>Ngày về: </li>
+                                <li>Phương tiện: </li>
+                                <li><a href=""><img width="50px" heigh="20px" src="images/cart_icon.png" alt=""/></a></li>
+                            </ul>
+                        </div>
+                        @endforeach
+                        <!--====== PACKAGE SHARE ==========-->
+                        <div class="tour_right head_right tour_social tour-ri-com">
+                            <h3>Theo dõi chúng tôi</h3>
+                            <ul>
+                                <li><a href="index.htm#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                            </ul>
+                        </div>
+                        
+                        <!--====== HELP PACKAGE ==========-->
+                        <div class="tour_right head_right tour_help tour-ri-com">
+                            <h3>Hỗ trợ và giúp đỡ</h3>
+                            <div class="tour_help_1">
+                                <h4 class="tour_help_1_call">Gọi bây giờ</h4>
+                                <h4><i class="fa fa-phone" aria-hidden="true"></i> 0122 645 2598</h4> 
+                            </div>
+                        </div>
+                        <!--====== Hiển thị tour liên quan ==========-->
+                        <div class="tour_right tour_rela tour-ri-com">
+                            <h3>Những tour liên quan</h3>
+                            
+                            <div class="tour_rela_1"> <img width="100px" height="200px" src="/storage/app/files/{{ $val->hinhanh }}" alt="" />
+                                <a href="{{ route('travel.tour.detail',['slug'=>$slug,'id' => $val->id_chitiet]) }}"><h6>{{ $val->tentour }}</h6></a>
+                                <h5>Khởi hành tại: {{ $val->diemden }}</h5>
+                                <h5>Thời gian {{ $val->songay }} ngày / {{ $val->sodem }} đêm</h5>
+                                <h5>Giá: {{ $val->gianguoilon }}</h5>
+                                <p>Lịch trình: {{ $val->lichtrinh }}</p>
+                                <p>Còn: {{ $val->soluongcon }} chỗ</p>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    @stop
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

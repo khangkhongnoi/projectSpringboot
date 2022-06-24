@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+
+<body>
+	
+<section id="main-content" layout:fragment="addtour">
+	<section class="wrapper">
+		<h2 class="w3ls_head" ></h2>
+<form th:action="@{/admin/tour/saveOrUpdate}" method="post"  th:object="${tour}" >
+        <div class="row">
+ 
+            <div class="col-lg-6">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="">
+                                <form role="form">
+                                <input type="hidden" th:field="*{isEdit}">
+                                 <div class="form-group" th:if="${tour.isEdit}">
+                                        <label for="exampleInputEmail1">Tour ID</label>
+                                        <input type="text" class="form-control" readonly th:field="*{idtour}" placeholder="ID">
+                                    </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">TÃªn Tour</label>
+                                    <input type="text" class="form-control" th:field="*{tentour}"  id="exampleInputEmail1" placeholder="Enter email">
+                             </div>
+                           <div class="form-group">
+                                <label for="tenloaitour">Loáº¡i Tour</label>
+                                <select class="form-control" name="idloaitour" th:field="*{idloaitour}"  id="loaitour">
+                                  <option value="0">--- Chá»�n loáº¡i tour---</option>
+                                  <option th:each="item : ${loaitour} " th:value="${item.idloaitour}"
+                                  th:text="${item.tenloaitour}" th:selected="${item.idloaitour == tour.idloaitour}"  ></option>
+                           
+                                </select>
+                              </div>
+                          
+       
+                          	<script>
+                          	$ ( 'document' ).ready( function() {
+                          		$("#tinh").change(function(){
+                          			$("#diadiem").empty();
+                          			getdiadiem();
+                          		})
+                          		getdiadiem();
+                          	})
+                          	
+                          		function getdiadiem(){
+                          	  	tinhid = $("#tinh").val();
+                          	  	
+                          		urlString = "http://localhost:8080/admin/tour/tinh/" + tinhid;
+                          		$.ajax({
+                          			type: "GET",
+                          			url: urlString})
+                          		.done(function(responseJson){
+                          			diadiemdown = $("#diadiem");
+                          			$.each(responseJson, function(index, diadiem){
+                          				$("<option>").val(diadiem.iddiadiem).text(diadiem.diemden).appendTo(diadiemdown);
+                          			});
+                          			
+                          		})
+                          	
+                          		}
+                          	</script>
+                          	<!--  
+                          	<script>
+                          	$ ( 'document' ).ready( function() {// DÃ²ng 1
+                          	    $ ( '#tinh' ).on( 'change' , function () {// DÃ²ng 2
+                          	        $( '#diadiem' ).empty ().append ( '<option value = "null"> - SELECT- </option>' ); // DÃ²ng 3
+                          	         var countryid = $( this ).val (); // DÃ²ng 4
+                          	         var href =  "http://localhost:8080/admin/tour/tinh/"  + countryid // DÃ²ng 5
+                          	        $.get (href, function (tinh, diadiems) {// DÃ²ng 6
+                          	             var state = tinh.diadiems; // DÃ²ng 7
+                          	             for ( var i =  0 ; i <= state.length - 1 ; i ++ ) {
+                          	                $ ( '#diadiem' ).append ( '<option value = "'  + diadiems[i] .iddiadiem +  '">'  + diadiems[i] .diemden +  '</option>' ); // DÃ²ng 9
+                          	            }
+                          	        })
+                          	    })
+                          	})
+                          	</script>
+                          	-->
+                             <div class="form-group">
+                                <label for="tendiadiem">TÃªn Tá»‰nh</label>
+                                <select class="form-control" name="idtinh"   id="tinh">
+                                  <option value="0">--- Chá»�n tÃªn tá»‰nh ---</option>
+                                  <option th:each="item : ${tinh} " th:value="${item.idtinh}"
+                                  th:text="${item.tentinh}" >Ten tour</option>
+                           
+                                </select>
+                                </div>
+            						<div class="form-group">
+                                <label for="tendiadiem">Ä�á»‹a Ä�iá»ƒm</label>
+                                <select class="form-control" name="idtinh" th:field="*{iddiadiem}"  id="diadiem">
+                                  <option value="0">--- Chá»�n Ä‘á»‹a Ä‘iá»ƒm ---</option>
+                                   <option th:each="item : ${diadiem} " th:value="${item.iddiadiem}"
+                                  th:text="${item.diemden}" th:selected="${item.iddiadiem == tour.iddiadiem}" >Ten tour</option>
+                        
+                                </select>
+                                </div>
+     
+     
+                              <div class="form-group">
+                                <label for="tenphuongtien">PhÆ°Æ¡ng Tiá»‡n</label>
+                                <select class="form-control" name="idphuongtien" th:field="*{idphuongtien}"  id="idphuongtien">
+                                  <option value="0">--- Chá»�n phÆ°Æ¡ng tiá»‡n ---</option>
+                                  <option th:each="item : ${phuongtien}" th:value="${item.idphuongtien}"
+                                  th:text="${item.tenphuongtien}" th:selected="${item.idphuongtien == tour.idphuongtien}" >Ten tour</option>
+                           
+                                </select>
+                                </div>
+             					<div class="form-group">
+                                        <label for="idtinh">Sá»‘ NgÃ y</label>
+                                         <input type="number"
+                                            class="form-control" name="idtinh" th:field="*{songay}" id="idtinh"
+                                            aria-describedby="tinhhe" placeholder="ID Tinh">
+                                             
+                                    </div>
+                             <div class="form-group">
+                                        <label for="idtinh">Sá»‘ Ä�Ãªm</label>
+                                         <input type="number"
+                                            class="form-control" name="idtinh" th:field="*{sodem}" id="idtinh"
+                                            aria-describedby="tinhhe" placeholder="ID Tinh">
+                                             
+                                    </div>
+                               
+                                  <div class="form-group">
+                                        <label for="idtinh">NgÃ y Ä�i</label> <input type="datetime-local"
+												class="form-control" name="ngaydi"  th:field="*{ngaydi}" 
+												id="ngaysinh" aria-describedby="ngaysinh" placeholder="ngaydi">
+											<small
+                                            id="tinhhe" class="form-text text-muted">ngay di is requires or invalid</small>
+                                    </div>
+                        <div class="form-group">
+                                        <label for="idtinh">NgÃ y Vá»�</label> <input type="datetime-local"
+												class="form-control" name="ngaysinh"  th:field="*{ngayve}" 
+												id="ngaysinh" aria-describedby="ngayve" placeholder="ngayve">
+											<small
+                                            id="tinhhe" class="form-text text-muted">ngayve is requires or invalid</small>
+                                    </div>    
+                                    
+                            </form>
+                            </div>
+    
+                        </div>
+                        
+                    </section>
+                    
+            </div>
+            <div class="col-lg-6">
+                <section class="panel">
+                    <div class="panel-body">
+                                   <script>
+                            function chomesFile(fieldInput){
+                                if(fieldInput.files && fieldInput.files[0])
+                                var reader = new FileReader();
+                                reader.onload = function(e){
+                                    $('#image').attr('src', e.target.result);
+                                }
+                                reader.readAsDataURL(fieldInput.files[0]);
+                            }
+    
+                        </script>
+                        <img id="image" class="img-fluid" src="" width="50%" alt="">
+                        <div class="form-group">
+                          <label for="hinhanh">Image File</label>
+                          <input type="file" onchange="chomesFile(this)" name="imageFile" th:field="*{hinhanh}"  id="hinhanh" class="form-control" placeholder="hinhanh" aria-describedby="helpId">
+                          <small id="helpId" class="text-muted">Hinh anh</small>
+                        </div>
+                        
+                        <div class="form-group">
+                                        <label for="idtinh">Sá»‘ LÆ°á»£ng</label>
+                                         <input type="text"
+                                            class="form-control" name="idtinh" th:field="*{soluongcon}" id="idtinh"
+                                            aria-describedby="tinhhe" placeholder="ID Tinh">
+                                             
+                                    </div>
+                      
+                        <div class="form-group">
+                          <label for="mota">MÃ´ Táº£</label>
+                          <textarea class="form-control" id="mota" th:field="*{mota}"  rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="lichtrinh">Lá»‹ch TrÃ¬nh</label>
+                          <textarea class="form-control"  id="lichtrinh" th:field="*{lichtrinh}"  rows="3"></textarea>
+                        </div>
+                     <div class="form-group">
+                          <label for="idtinhtrang">Tráº¡ng thÃ¡i</label>
+                          <select class="form-control" name="idtinhtrang" id="idtinhtrang">
+                            <option>Yes</option>
+                            <option>No</option>
+                            
+                          </select>
+                        </div>
+                          
+                        <button type="submit" class="btn btn-primary" th:text="${tour.isEdit ? 'Update' : 'Save'  } " ><i class="fas fa-save"></i>
+                           
+                            Save
+                            </button>
+
+                    <a  th:href="@{/admin/tour}" class="btn btn-success">List tour</a>
+                 <a th:if="${tour.isEdit}" th:href="@{'/admin/tour/delete/' + ${tour.idtour} }"  class="btn btn-danger float-right" ><i class="fas fa-delete">Xoa</a>
+                    
+                    </div>
+                </section>
+        </div>
+          
+</section>
+</form>
+</section>
+
+<!--  
+<script>
+	function getDiadiems(){
+		urlString = "http://localhost:8080/admin/tour/tinh/1";
+		$.ajax({method: "GET", url: urlString})
+			.done(function(){
+				alert(response);
+			})
+			.fail(function(){
+				alert("error connecting to the server")
+			})
+			.always(function(){
+				alert("alway executes");
+		})
+		;
+	}
+</script>
+ <script>
+ $(document).ready(function(){
+	  $("idtinh").change(function(){
+	    var idtinh=$(this).val;
+	    $.ajax({url: "TourController/getDiadiemByIdtinh",
+	    		type:"GET",
+	    		dateType: 'json',
+	    		data: idtinh=idtinh,
+	    	success: function(result){
+	        $("#iddiadiem").html(result);
+	      }});
+	  });
+	});
+ </script>
+ -->
+</body>
+</html>

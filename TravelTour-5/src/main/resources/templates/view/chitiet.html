@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
+   ">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link th:href="@{/view/css/style.css}" rel='stylesheet' type='text/css' />
+    
+  </head>
+  
+  <body>
+    <div class="top-nav" id="home">
+        <div class="container">
+            <div class="row justify-content-between ">
+                <div class="col-auto">
+                    <p>
+                        <span><i class='bx bxs-map'></i></span>
+                        <span>Cần Thơ,Việt Nam</span>
+                    </p>
+                    <p>
+                        <span><i class='bx bxs-phone-call'></i></span>
+                        <span>+84357534716</span>
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook' ></i></a>
+                        <a href="#"><i class='bx bxl-instagram-alt' ></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+              <img class="ss" src="images/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tour</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Danh mục
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+        
+              
+          </div>
+          <div class="login">
+            <a th:if="${#request.userPrincipal == null}" th:href="@{/login}"><span >Đăng nhập [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/view/alogin}"><span > [[${userName}]]</span></a>
+            <a th:if="${#request.userPrincipal == null}" href=""><span>Đăng ký</span></a>
+           <a th:if="${#request.userPrincipal != null}" th:href="@{/logoutSuccessful}"><span>Đăng xuất</span></a>
+            		
+       
+        </div>
+        <div class="cart">
+            <a  th:href="@{/giohang/xemgiohang}"><span><i class='bx bx-cart' ></i></span></a>
+        </div>
+        <div id="giohang">
+        	<div th:if="${ 0 < soluonggiohang}"  class="soluonggiohang"><span  th:text="${soluonggiohang}" ></span></div>
+        	<div th:if="${soluonggiohang <= 0 || soluonggiohang == null }"></div>
+        	
+        
+        </div>
+        
+        </div>
+        <!-- <div class="image">
+            <img width="50px" heigh="20px" src="images/giohang.png" alt="">
+        </div> -->
+      </nav>
+            <!-- END TOP SEARCH BOX -->
+        </section>
+        <!--END HEADER SECTION-->
+ 
+        <!--====== BANNER ==========-->
+        <section>
+        
+            <div class="rows inner_banner inner_banner_4">
+                <div class="container">
+                 <h2 > <span>Còn</span> <span id="soluongcon">  [[${item.soluongcon}]]</span><span> Chỗ</span> [[${item.tentour}]] </h2>
+                    
+                    <ul>
+                        <li><a href="{{ route('travel.index.index') }}">Trang chủ</a>
+                        </li>
+                        <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
+                        <li><a >{{ $objItem->tenlt }}</a>
+                        </li>
+                    </ul>
+                    <p>Hãy đặt ngay nhiều ưu đãi đang chờ bạn khám phá! </p>
+                </div>
+            </div>
+            
+        </section>
+                 
+        <!--====== TOUR DETAILS - BOOKING ==========-->
+        <section>
+            <div class="rows banner_book" id="inner-page-title">
+                <div class="container">
+                    <div class="banner_book_1">
+                        <ul>
+                        <li class="dl1 tentour" id="tent" th:value="${item.idtour}"> Tên tour :[[${item.tentour}]] </li>
+                            <li class="dl1"> Khởi hành tại :[[${item.diadiem.diemden}]] </li>
+                 
+                       	 	<li class="dl2 gianguoilon" id="gianguoilon" th:value="${pro.idgiatour}">[[${pro.gianguoilon}]]</li>
+                            <li class="dl2 giatreem" id="giatreem" th:value="${pro.idgiatour}">[[${pro.giatreem}]]</li>
+                            <li class="dl3">Thời gian : [[${item.songay}]] ngày / [[${item.sodem}]] đêm</li>
+                         	
+                            <li class="dl4"><a th:href="@{'/view/phieudat/' + ${item.idtour}}">Đặt ngay</a>  </li>
+                          <   <li  class="dl4" th:if="${userName == null}" > <a  th:href="@{/login}">Thêm giỏ hàng</a>
+                           
+                            </li>
+                            <li  class="dl4 btn-giohang" th:if="${userName != null}" > <a>Thêm giỏ hàng</a>
+                           
+                           </li>
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--====== TOUR DETAILS ==========-->
+        <section>
+            <div class="rows inn-page-bg com-colo">
+                <div class="container inn-page-con-bg tb-space">
+                    <div class="col-md-9">
+                        <!--====== TOUR TITLE ==========-->
+                        <div class="tour_head">
+                            <h2>[[${item.tentour}]] <span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span><span class="tour_rat">4.5</span></h2> </div>
+                        <!--====== TOUR DESCRIPTION ==========-->
+                        <div class="tour_head1">
+                            <h3>Giới thiệu tour</h3>
+    
+                            <p>[[${item.mota}]]</p>
+                            <p>[[${item.ghichu}]]</p>
+                        </div>
+                        
+                        <!--====== TOUR LOCATION ==========-->
+                        <div class="tour_head1 tout-map map-container">
+                            <h3>Bản đồ</h3>
+                            <iframe src="" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        
+                        <!--====== DURATION ==========-->
+                        <div class="tour_head1 l-info-pack-days days">
+                            <h3>Chương trình tour</h3>
+                            <ul>
+                              
+                                <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <h4><span>[[${item.lichtrinh}]]</span> </h4>
+                                    <p>[[${item.mota}]]</p>
+                                </li>
+                             
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="dir-rat">
+                                <div class="dir-rat-inn dir-rat-title">
+                                    <h3>Để lại bình luận!</h3>
+                                    <p>Nếu bạn có thắc mắc gì về tour hãy để lại bình luận</p>
+                                    <!-- nút like fb -->
+                                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="10px" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                </div>
+                                <div class="dir-rat-inn">
+                                    <form  class="dir-rat-form" method="post">
+                                     
+                                        <div class="form-group col-md-12 pad-left-o">
+                                            <textarea placeholder="Nhập bình luận" name="noidung"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12 pad-left-o">
+                                            <input type="submit" value="SUBMIT" class="link-btn"> </div>
+                                    </form>
+                                    
+                                </div>
+                                <!--COMMENT RATING-->
+                                @foreach($objItemsBL as $key => $val)
+    
+                                <div class="dir-rat-inn dir-rat-review">
+                                    <div class="row">
+                                        <div class="col-md-3 dir-rat-left"> <img src="images/reviewer/4.jpeg" alt="">
+                                            <p>{{ $val->ten }}<span>{{ $val->ngaygio }}</span> </p>
+                                        </div>
+                                        <div class="col-md-9 dir-rat-right">
+                                            <div class="dir-rat-star"> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                            <p>{{ $val->noidung }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tour_r">
+                        <!--====== hiển thị 1 tour nổi bật ==========-->
+                     
+                        <div class="tour_right tour_offer">
+                            <div class="band1"><img src="images/offer.png" alt="" /> </div>
+                            <p>Đặc biệt</p>
+                            <h4>{{ $val->gianguoilon }}</h4>
+                          
+                            <a href="{{ route('travel.tour.phieudat',['id' => $val->id_chitiet,'slug'=>$slug]) }}" class="link-btn">Đặt chỗ</a> </div>
+                           
+                            <a href="javascript:void(0)" class="link-btn">Hết chỗ</a> </div>
+                      
+                        <!--====== TRIP INFORMATION ==========-->
+                        <div class="tour_right tour_incl tour-ri-com">
+                            <h3>Thông tin tour</h3>
+                            <ul>
+                                <li>Lịch trình : </li>
+                                <li>Ngày đi:</li>
+                                <li>Ngày về: </li>
+                                <li>Phương tiện: </li>
+                                <li><a href=""><img width="50px" heigh="20px" src="images/cart_icon.png" alt=""/></a></li>
+                            </ul>
+                        </div>
+                        @endforeach
+                        <!--====== PACKAGE SHARE ==========-->
+                        <div class="tour_right head_right tour_social tour-ri-com">
+                            <h3>Theo dõi chúng tôi</h3>
+                            <ul>
+                                <li><a href="index.htm#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                                <li><a href="index.htm#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                            </ul>
+                        </div>
+                        
+                        <!--====== HELP PACKAGE ==========-->
+                        <div class="tour_right head_right tour_help tour-ri-com">
+                            <h3>Hỗ trợ và giúp đỡ</h3>
+                            <div class="tour_help_1">
+                                <h4 class="tour_help_1_call">Gọi bây giờ</h4>
+                                <h4><i class="fa fa-phone" aria-hidden="true"></i> 0122 645 2598</h4> 
+                            </div>
+                        </div>
+                        <!--====== Hiển thị tour liên quan ==========-->
+                        <div class="tour_right tour_rela tour-ri-com">
+                            <h3>Những tour liên quan</h3>
+                            
+                            <div class="tour_rela_1"> <img width="100px" height="200px" src="/storage/app/files/{{ $val->hinhanh }}" alt="" />
+                                <a href="{{ route('travel.tour.detail',['slug'=>$slug,'id' => $val->id_chitiet]) }}"><h6>{{ $val->tentour }}</h6></a>
+                                <h5>Khởi hành tại: {{ $val->diemden }}</h5>
+                                <h5>Thời gian {{ $val->songay }} ngày / {{ $val->sodem }} đêm</h5>
+                                <h5>Giá: {{ $val->gianguoilon }}</h5>
+                                <p>Lịch trình: {{ $val->lichtrinh }}</p>
+                                <p>Còn: {{ $val->soluongcon }} chỗ</p>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    @stop
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{/admin/js/bootstrap.js}"></script>
+<script th:src="@{/admin/js/jquery.dcjqaccordion.2.7.js}"></script>
+<script th:src="@{/admin/js/scripts.js}"></script>
+ <script th:src="@{/view/js/ajax.js}"></script>
+<script th:src="@{/admin/js/jquery.nicescroll.js}"></script>
+<script th:src="@{/admin/js/jquery-3.2.1.min.js}"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script th:src="@{/admin/js/jquery.scrollTo.js}"></script>
+ <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+  </body>
+</html>

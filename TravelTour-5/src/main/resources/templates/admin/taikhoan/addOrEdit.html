@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+
+	<!--sidebar end-->
+	<!--main content start-->
+	<section id="main-content" layout:fragment="content">
+		<section class="wrapper">
+			<h2 class="w3ls_head"th:text="${taikhoan.isEdit? 'Edit tai khoan' : 'Them tai khoan' }"> </h2>
+			<div th:if="${message != null}" class="alert alert-primary">
+        			<i>[[${message}]]</i>
+          </div>
+			<form th:action="@{/admin/taikhoan/saveOrUpdate}" method="post"
+				th:object="${taikhoan}">
+				<div class="row" >
+					<div class="col justify-content-center">
+						<section class="panel">
+							<header class="panel-heading" > </header>
+							             
+							<div class="panel-body">
+								<div class="position-center">
+									<form role="form">
+									
+										<div class="form-group">
+											<label for="tentaikhoan">Ten tai khoan</label>
+								
+											 <input type="text"
+												class="form-control" name="tentaikhoan" th:field="*{tentaikhoan}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('tentaikhoan')}"
+												id="tinhhe" class="form-text text-muted"></small>
+										</div>
+											
+										<div class="form-group">
+											<label for="idtinh">Email</label>
+											 <input type="text"
+												class="form-control" name="email" th:field="*{email}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('email')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+										<div class="form-group">
+											<label for="idtinh">Password</label>
+											 <input type="text"
+												class="form-control" name="password" th:field="*{password}" id="idtinh"
+												aria-describedby="tinhhe" placeholder="ID Tinh">
+												 <small th:if="${#fields.hasErrors('password')}"
+												id="tinhhe" class="form-text text-muted">Tinh is requires or invalid</small>
+										</div>
+										<button class="btn btn-primary">
+											<i class="fas fa-save"></i> 
+											<span th:if="${taikhoan.isEdit}"></span>Update
+											<span th:unless="${taikhoan.isEdit}">Save</span>
+										</button>
+
+										<a th:href="@{/admin/taikhoan}" class="btn btn-success">List
+											categories</a>
+										<button class="btn btn-secondary">Reset</button>
+
+									</form>
+								</div>
+
+							</div>
+						</section>
+
+					</div>
+				</div>
+
+			</form>
+
+		</section>
+
+
+	</section>
+
+	<!--main content end-->
+	</section>
+
+</body>
+</html>

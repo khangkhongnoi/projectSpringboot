@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+	
+<section id="main-content" layout:fragment="listtinh">
+    <section class="wrapper text-center">
+        <h2 class="w3ls_head">Danh sách loai tour</h2>
+
+             <div th:if="@{message != null}" class="alert alert-primary">
+                    	<i>[[${message}]]</i>
+                    </div>
+           <div class="row mt-2 mb-2">
+       <div class="col">
+         <form th:action="@{/admin/loaitour/search}" >
+           <div class="form-inline">
+             <label for="tentinh">Tìm kiếm</label>
+             <input type="text" class="form-control ml-2" name="tentinh" id="tentinh" aria-describedby="helpId" placeholder="tentinh">
+             <button  class=" btn btn-outline-primary ml-2">Search</button>
+           </div>
+         </form>
+         <div class="float-right">
+         	<a class="btn btn-primary" th:href="@{/admin/loaitour/add}">Add </a>
+         </div>
+       </div>
+     </div>   
+     <div class="row"  >
+        	<div class="col">
+        	<div class="alert alert-primary" role = "alert" >
+        		<strong>No tinh found</strong>
+        	</div>
+        	</div>
+        </div>
+        <div class="card-body">
+        
+        <table class="table table-light table-hover border-primar">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên loai tour</th>
+                <th scope="col">Chức năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each= " item : ${loaitour}" >
+                <th scope="row">[[${item.idloaitour}]]</th>
+                <td th:text="${item.tenloaitour}"> </td>
+               
+            <td>
+                       <a  class="btn btn-outline-primary"><i class="fas fa-info"></i></a>
+                       <a th:href="@{'/admin/loaitour/edit/' + ${item.idloaitour} }" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+                       <a 
+                                class="btn btn-outline-danger"><i class="fas fa-recycle"></i></a>
+                            </td>
+                       </tr>
+               
+                   </tbody>
+           </table>
+          
+          <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+          </div>
+</section>
+</body>
+</html>

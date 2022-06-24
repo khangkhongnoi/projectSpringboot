@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+</head>
+<body>
+	
+<section id="main-content" layout:fragment="listtinh">
+    <section class="wrapper text-center">
+        <h2 class="w3ls_head">Danh sách tỉnh du lịch</h2>
+
+             <div th:if="@{message != null}" class="alert alert-primary">
+                    	<i>[[${message}]]</i>
+                    </div>
+           <div class="row mt-2 mb-2">
+       <div class="col">
+         <form th:action="@{/admin/tinh/search}">
+           <div class="form-inline">
+             <label for="tentinh">Tìm kiếm</label>
+             <input type="text" class="form-control ml-2" name="tentinh" id="tentinh" aria-describedby="helpId" placeholder="tentinh">
+             <button  class=" btn btn-outline-primary ml-2">Search</button>
+           </div>
+         </form>
+         <div class="float-right">
+         	<a class="btn btn-primary" th:href="@{/admin/tinh/add}">Add </a>
+         </div>
+       </div>
+     </div>   
+     <div class="row"  >
+        	<div class="col">
+        	<div class="alert alert-primary" role = "alert" >
+        		<strong>No tinh found</strong>
+        	</div>
+        	</div>
+        </div>
+        <div class="card-body">
+        
+        <table class="table table-light table-hover border-primar">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ten Tour</th>
+                 <th scope="col">Loai tour</th>
+                <th scope="col">Ngày đi</th>
+                <th scope="col">Ngày về</th>
+                <th scope="col">Số ngày</th>
+                <th scope="col">Số đêm</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each= " tour : ${tour}" >
+              	
+                <th scope="row">[[${tour.idtour}]]</th>
+                <td th:text="${tour.tentour}"> </td>
+                <td th:text="${tour.loaitour.tenloaitour}"></td>
+             	<td th:text="${tour.ngaydi}"></td>
+             	<td th:text="${tour.ngayve}"></td>
+                <td th:text="${tour.songay}"></td>
+                <td th:text="${tour.sodem}"></td>
+       
+               <td>
+               
+            <td>
+                       <a th:href="@{'/admin/tour/edit/' + ${tour.idtour} }" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+                       <a  th:href="@{'/admin/tour/delete/' + ${tour.idtour} }" class="btn btn-outline-danger"><i class="fas fa-recycle"></i></a>
+          </td>
+            </tbody>
+          </table>
+        </div>
+          <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+          </div>
+</section>
+</body>
+</html>
